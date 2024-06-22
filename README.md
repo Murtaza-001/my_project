@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   ![Demo GIF](https://ytiurin.github.io/tetris/public/demo.gif)
 
 # [Play :video_game: TETRIS](https://ytiurin.github.io/tetris/)
@@ -69,3 +70,6 @@ The [play page](https://ytiurin.github.io/tetris/) is served as a [PWA](https://
 ## Leaderboard
 
 I also made a simple microservice to store best scores of the [play page](https://ytiurin.github.io/tetris/).
+=======
+# my_project
+>>>>>>> origin/main
