@@ -34,7 +34,7 @@ jobs:
 
       - name: Update kubeconfig
         run: |
-          aws eks update-kubeconfig --name your-cluster-name --region ap-south-1
+          aws eks update-kubeconfig --name mycluster1 --region ap-south-1
 
       - name: Login to Amazon ECR
         id: login-ecr
