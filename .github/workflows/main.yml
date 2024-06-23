@@ -20,8 +20,8 @@ jobs:
       id: ecr-login
       uses: aws-actions/amazon-ecr-login@v1
       with:
-        registry: 293468392925.dkr.ap-south-1.amazonaws.com
-        region: ap-south-1
+        registry: 293468392925.dkr.ecr.ap-south-1.amazonaws.com
+        aws-region: ap-south-1
         mask-password: false
         registry-type: private
         skip-logout: false
