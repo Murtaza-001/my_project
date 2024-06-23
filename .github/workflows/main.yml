@@ -21,8 +21,10 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
       with:
         registry: 293468392925.dkr.ecr.ap-south-1.amazonaws.com
-        registry-type: 'AWS'  # Specify 'AWS' for AWS ECR
-        region: ap-south-1
+        registry-type: private
+        aws-region: ap-south-1
+        mask-password: false
+        skip-logout: false
 
     - name: Build, tag, and push Docker image
       env:
