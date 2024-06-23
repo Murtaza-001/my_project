@@ -16,18 +16,23 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
 
-    - name: Login to AWS ECR
+    - name: Login to Amazon ECR
       id: ecr-login
       uses: aws-actions/amazon-ecr-login@v1
+      with:
+        registry: 293468392925.dkr.ap-south-1.amazonaws.com
+        region: ap-south-1
+        mask-password: false
+        registry-type: private
+        skip-logout: false
 
     - name: Build, tag, and push Docker image
       env:
         ECR_REGISTRY: ${{ steps.ecr-login.outputs.registry }}
-        ECR_REPOSITORY: myapp
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker build -t $ECR_REGISTRY/your-ecr-repository-name:$IMAGE_TAG .
+        docker push $ECR_REGISTRY/your-ecr-repository-name:$IMAGE_TAG
 
   deploy:
     runs-on: ubuntu-latest
@@ -54,8 +59,8 @@ jobs:
 
     - name: Deploy to EKS
       run: |
-        kubectl apply -f k8s/deployment.yml
-        kubectl apply -f k8s/service.yml
-        kubectl apply -f k8s/ingress.yml
-        kubectl apply -f k8s/configmap.yml
-        kubectl apply -f k8s/secrets.yml
+        kubectl apply -f k8s/deployment.yaml
+        kubectl apply -f k8s/service.yaml
+        kubectl apply -f k8s/ingress.yaml
+        kubectl apply -f k8s/configmap.yaml
+        kubectl apply -f k8s/secrets.yaml
