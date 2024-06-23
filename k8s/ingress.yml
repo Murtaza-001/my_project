@@ -8,8 +8,7 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
 spec:
   rules:
-    - host: your-app-domain
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
@@ -18,3 +17,4 @@ spec:
                 name: myapp-service
                 port:
                   number: 80
+
